@@ -1,3 +1,7 @@
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { updateHangman } from "../features/hangmanSlice";
+
 const HEAD = (
   <div className="h-[50px] w-[50px] border-4 border-black rounded-full absolute top-[46px] right-[40px]"></div>
 );
@@ -23,6 +27,17 @@ const RIGHT_LEG = (
 );
 
 const HangmanDrawing = () => {
+  const dispatch = useAppDispatch();
+  const { incorrectGuesses } = useAppSelector((state) => state.game);
+
+  useEffect(() => {
+    dispatch(updateHangman(incorrectGuesses));
+  }, [incorrectGuesses, dispatch]);
+
+  const { parts } = useAppSelector((state) => state.hangman);
+
+  const hangmanParts = [HEAD, BODY, LEFT_HAND, RIGHT_HAND, LEFT_LEG, RIGHT_LEG];
+
   return (
     <div className="h-[100%] flex items-center justify-center">
       <div className="relative">
@@ -79,12 +94,7 @@ const HangmanDrawing = () => {
             />
           </g>
         </svg>
-        {HEAD}
-        {BODY}
-        {LEFT_HAND}
-        {RIGHT_HAND}
-        {LEFT_LEG}
-        {RIGHT_LEG}
+        {parts.map((part) => hangmanParts[part])}
       </div>
     </div>
   );

@@ -1,12 +1,8 @@
-import { useState } from "react";
-import { randomWords } from "../data/data";
+import { useAppSelector } from "../app/hooks";
 
 const HangmanWord = () => {
-  const guessedWord = "tet";
+  const { word, guessedLetters } = useAppSelector((state) => state.game);
 
-  const [word, setWord] = useState(
-    () => randomWords[Math.floor(Math.random() * randomWords.length)]
-  );
   return (
     <div className="p-4 flex justify-center gap-6 mb-[32px] flex-wrap">
       {word.split("").map((letter, index) => (
@@ -16,7 +12,7 @@ const HangmanWord = () => {
         >
           <span
             className={`font-bold uppercase text-3xl sm:text-4xl md:text-5xl ${
-              !guessedWord.includes(letter) ? "hidden" : ""
+              !guessedLetters.includes(letter) ? "hidden" : ""
             }`}
           >
             {letter}
