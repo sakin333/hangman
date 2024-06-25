@@ -4,6 +4,7 @@ import HangmanDrawing from "../components/hangman-drawing";
 import HangmanLetters from "../components/hangman-letters";
 import HangmanWord from "../components/hangman-word";
 import { startGame } from "../features/gameSlice";
+import CustomModal from "../components/custom-result-modal";
 
 const Homepage = () => {
   const dispatch = useAppDispatch();
@@ -24,6 +25,7 @@ const Homepage = () => {
           <HangmanDrawing />
         </div>
       </div>
+      <CustomModal />
     </>
   );
 };
