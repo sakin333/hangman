@@ -12,8 +12,8 @@ const CustomModal = () => {
   if (status === "playing") return null;
 
   return (
-    <div className="bg-white rounded-md shadow-lg w-[90vw] h-[40vh] max-w-[350px] max-h-[280px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-      <div className="flex flex-col items-center justify-center py-4 relative">
+    <div className="h-[100%] w-[100%] flex justify-center items-center absolute top-0 left-0">
+      <div className="bg-white rounded-md shadow-lg w-[90vw] h-[40vh] max-w-[350px] max-h-[280px] flex flex-col items-center justify-center py-4 relative">
         <button onClick={handlePlayAgain}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
